@@ -29,7 +29,7 @@ def password_generation(request):
     if upper:
         check_chars += "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     if lower:
-        check_chars += "abcdefjhijklmnopqrstuvwxyz"
+        check_chars += "abcdefghijklmnopqrstuvwxyz"
     if digits:
         check_chars += "0123456789"
     if special:

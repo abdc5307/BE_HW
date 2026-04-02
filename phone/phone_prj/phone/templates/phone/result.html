@@ -7,12 +7,12 @@
 </head>
 <body>
     <h1>"{{ keyword }}" 검색 결과 페이지입니다.</h1>
-    {% for phone in phones %}
-        <a href = "{% url 'phone:detail' %}">{{ phone.name }}</a>{{phone.phone_num}} 
+    {% for phone in results %}
+        <a href = "{% url 'phone:detail' phone.id %}">{{ phone.name }}</a> {{phone.phone_num}} 
     {% empty %}
         <p>해당 검색어와 관련된 전화번호가 없습니다.</p>
     {% endfor %}
-    <br>
+    <br><br>
     <a href = "{% url 'phone:list' %}">연락처 목록으로 돌아가기</a>
 
 

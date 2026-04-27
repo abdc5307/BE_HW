@@ -13,7 +13,7 @@ def signup(request):
         form.save()
         return redirect('accounts:login')
     else:
-        return render('accounts/singup.html', {'form' : form})
+        return render(request,'accounts/signup.html', {'form' : form})
     
 def login(request):
     if request.method == 'GET':

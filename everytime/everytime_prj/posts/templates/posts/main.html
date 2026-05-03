@@ -9,7 +9,28 @@
     {% if request.user.is_authenticated %}<br><br>
     nickname: {{ request.user.nickname }} <br><br>
     <a href = "{% url 'accounts:mypage' %}">마이페이지</a>
-    <a href = "{% url 'accounts:logout' %}">로그아웃</a>
+    <a href = "{% url 'accounts:logout' %}">로그아웃</a><hr><br>
+    <form method="POST">
+        {% csrf_token %}
+    <input type="text" name ="title" placeholder="제목 입력"><br>
+    <textarea name = "content" placeholder="본문 입력"></textarea><br><br>
+    <input type="checkbox" name="anonymous"> 익명
+    <button type = "submit">작성완료</button><hr>
+    {% for post in posts %}
+        {% if post.is_anonymous %}
+            <a href = "{% url 'posts:detail' post.id %}">익명으로 쓴 글</a><br>
+
+        {% else %}
+            <a href = "{% url 'posts:detail' post.id %}">{{ post.author.username }}가 쓴 글</a><br>
+        {% endif %}
+        {{ post.content }}<br>
+        {{ post.created_at }}<br><hr>
+
+    {% empty %}
+        아직 작성된 글이 없습니다. 
+    {% endfor %}
+
+    
     {% else %}
     <br><br>
     <a href = "{% url 'accounts:login' %}">로그인</a> 

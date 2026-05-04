@@ -19,6 +19,17 @@ def update(request, id):
     if request.method == "POST":
         post.title = request.POST.get('title')
         post.content = request.POST.get('content')
+        image = request.FILES.get('image')
+        video = request.FILES.get('video')
+
+        if image:
+            post.image.delete()
+            post.image = image
+
+        if video:
+            post.video.delete()
+            post.video = video
+
         post.save()
         return redirect('blog:detail', id)
     return render(request, 'blog/update.html', {'post':post})

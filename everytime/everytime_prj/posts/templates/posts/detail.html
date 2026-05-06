@@ -10,15 +10,20 @@
     nickname: {{ post.author.nickname }}<br>
     <a href = "{% url 'accounts:logout' %}">로그아웃</a><hr>
     <h2>
-        {% if post.is_anonymous %}
-            익명으로 쓴 글
-        {% else %}
-            {{ post.author.username }}님이 쓴 글
-        {% endif %}
+    {{ post.title }}<br>
     </h2>
     {{ post.content }}<br><br>
     {{ post.created_at }}<br><br>
-    {{ post.author.nickname }}<br><hr>
+    {% if post.is_anonymous %}
+        익명<br><br>
+    {% else %}
+        {{ post.author.nickname }}<br><br>
+    {% endif %}
+
+    <a href = "{% url 'posts:update' post.id%}">수정하기</a>
+    <a href = "{% url 'posts:delete' post.id%}">삭제하기</a><br><hr>
+
+    
     
     <h3>댓글</h3>
     {% for comment in post.comments.all %}
@@ -30,7 +35,7 @@
                 : {{ comment.content }} - {{ comment.created_at}}
             
             {% if comment.author == user %}
-                <a href = "{% url 'posts:comment_delete' comment.id %}">삭제하기</a><br>
+                <a href = "{% url 'posts:comment_delete' comment.id %}">삭제하기</a><br><br>
             {% endif %}
         {% empty %}
         댓글이 없습니다.<br>

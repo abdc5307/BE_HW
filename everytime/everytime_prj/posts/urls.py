@@ -5,7 +5,7 @@ app_name = 'posts'
 
 urlpatterns =[
     path('', main, name ='main'),
-    path('deatail/<int:post_id>/', detail, name = 'detail'),
+    path('detail/<int:post_id>/', detail, name = 'detail'),
     path('update/<int:post_id>/', update, name ='update'),
     path('delete/<int:post_id>/', delete, name = 'delete'),
     path('comment_delete/<int:comment_id>/', comment_delete, name = 'comment_delete'),

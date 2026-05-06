@@ -7,15 +7,11 @@
 </head>
 <body>
     {% for post in posts %}
-        {% if post.is_anonymous %}
-            <a href = "{% url 'posts:detail' post.id %}">익명으로 쓴 글</a>
-        {% else %}
-            <a href = "{% url 'posts:detail' post.id %}">{{ post.author.username }}가 쓴 글</a>
-        {% endif %}
-        <br>
-        {{ post.content }}<br>
-        작성일 - {{ post.created_at }}<br>
-        작성자 - {{ post.author.nickname }}<br><br>
+            <h2><a href = "{% url 'posts:detail' post.id %}">{{ post.title}}</a></h2>
+
+        {{ post.content }}<br><br>
+        작성일 - {{ post.created_at }}<br><br>
+        작성자 - {{ post.author.nickname }}<br><hr>
     {% empty %}
         작성한 글이 없습니다
     {% endfor %}

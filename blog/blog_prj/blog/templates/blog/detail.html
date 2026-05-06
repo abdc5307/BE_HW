@@ -51,7 +51,7 @@
 
     <form method = "POST" action="{% url 'blog:create-comment' post.id %}">
         {% csrf_token %}
-        <textarea name="content" cols="30" row="5"></textarea>
+        <textarea name="content" cols="30" rows="5"></textarea>
         <button type="submit">댓글 작성</button> <br>
     </form>
 </body>

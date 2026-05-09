@@ -26,7 +26,7 @@
     {% for post in posts %}
     <h2><a href = "{% url 'posts:detail' post.id %}">{{ post.title }}</a></h2>
     {{ post.created_at|naturaltime }}<br><br>
-    댓글 {{ post.comments.count }}개 | 공감 {{ post.likes.count }}개<br>
+    댓글 {{ post.comments.count }}  공감 {{ post.likes.count }}<br><br><hr>
 
     {% empty %}
         아직 작성된 글이 없습니다. 

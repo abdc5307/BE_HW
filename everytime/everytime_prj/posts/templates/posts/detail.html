@@ -56,7 +56,7 @@
                 : {{ comment.content }} - {{ comment.created_at}}<br><br>
             
             {% if comment.author == user %}
-                <a href = "{% url 'posts:comment_delete' comment.id %}">삭제하기</a><br><br>
+                <a href = "{% url 'posts:comment_delete' comment.id %}">삭제하기</a><br>
             {% endif %}
         {% empty %}
         댓글이 없습니다.<br>

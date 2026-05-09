@@ -53,7 +53,7 @@
             {% else %}
                 {{ comment.author.username }}
             {% endif %}
-                : {{ comment.content }} - {{ comment.created_at}}
+                : {{ comment.content }} - {{ comment.created_at}}<br><br>
             
             {% if comment.author == user %}
                 <a href = "{% url 'posts:comment_delete' comment.id %}">삭제하기</a><br><br>
